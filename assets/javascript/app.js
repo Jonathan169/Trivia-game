@@ -248,7 +248,7 @@ $("#mainb").on("click", function(){
         incorrect=0;
     }    
 })
-let infot="From the Makers Of Star Wars RPG comes STAR WARS Trivia We will Test you knowladge Of the saga. You will have 15 second to answer each question when or you can click the answer button If your certain you have the correct answer. once you press start the game will begin!"
+let infot="From the Makers Of Star Wars RPG comes STAR WARS Trivia We'll Test you knowledge Of the saga. You'll have 15 seconds to answer each question. Click the answer button when you are certain you have the correct answer. once you press start the game will begin!"
 $("#mainp").on("click", function (){
     $("#questions").text(infot)
     for(let x=0;x<butts.length;x++){
