@@ -54,6 +54,47 @@ const q11={
     answer:'Luke Skywalker',
     wrong:['Snoke','Leia Organa','Darth Vader']
 }
+const q12={
+    question:"where was Darth sidious from",
+    answer:'Naboo',
+    wrong:['Mustafar','Endor','Organa']
+}
+const q13={
+    question:"What is the coldest planet in all the films",
+    answer:'Hoth',
+    wrong:['Mustafar','Endor','Naboo']
+}
+const q14={
+    question:"Who was Darth sidious Apperntice Before Darth Vader",
+    answer:'Count Dooku',
+    wrong:['Darth Maul','yoda','Darth Plauges']
+}
+const q15={
+    question:"Who was Darth Sidious's Master",
+    answer:'Darth Plauges',
+    wrong:['Darth Maul','yoda','Qui-gon jin']
+}
+const q16={
+    question:"How many Jedi were on the jedi Council",
+    answer:'12',
+    wrong:['3','5','8']
+}
+const q17={
+    question:"Who gave the order to Kill all the jedi",
+    answer:'Emperer Palpatine',
+    wrong:['Darth Vader','Darth Maul','Count Dooku']
+}
+const q18={
+    question:"How many Lightsabers did General Grievous Hold",
+    answer:'4',
+    wrong:['2','1','3']
+}
+const q19={
+    question:"Who killed the Padawan(Kids) in the jedi Temple",
+    answer:'Darth Vader',
+    wrong:['Annikan Skywalker','Darth Sidious','Darth Maul']
+}
+
 const b1={
     selector:$("#option1"),
     value:1
@@ -71,14 +112,13 @@ const b4={
     value:4
 }
 
-
 //Arrays
 const optionp=[$("#option1"),$("#option2"),$("#option3"),$("#option4")]
 const butts=[b1,b2,b3,b4]
 const but=[b1,b2,b3,b4]
 const optionc=[$("#option1"),$("#option2"),$("#option3"),$("#option4")]
 const indexo=["option1","option2","option3","option4"]
-const qss=[q1,q2,q3,q4,q5,q6,q7,q8,q9,q10,q11];
+const qss=[q1,q2,q3,q4,q5,q6,q7,q8,q9,q10,q11,q12,q13,q14,q15,q16,q17,q18,q19];
 
 function shuffle(arr){
     for(let i=arr.length-1;i>0;i--){
@@ -106,6 +146,7 @@ var score;
 gamestart = function() {
     intervalId= setInterval(count, 1000)
 };
+
 var time=15;
 function count() {
     if(time){
@@ -113,6 +154,7 @@ function count() {
         $("#timer").text(time);
     }
     else if(time===0 && qnum===11){
+        $("#timer").text(time);
         clearInterval(intervalId);
         checka();
         game=false;
@@ -121,6 +163,7 @@ function count() {
         choice="";
     }
     else if(time===0){
+        $("#timer").text(time);
         clearInterval(intervalId);
         checka();
         qdone=true;
@@ -132,17 +175,24 @@ function count() {
 };
 
 function checka(){
-    butts[apos].selector.attr("class","rbutton")
-    console.log(but[choice].value)
     for (let i=0;i<optionc.length-1;i++){
         butts[i].selector.attr("class","wbutton")
     }
-    if(butts[apos].value===but[choice].value){
+    butts[apos].selector.attr("class","rbutton");
+    if(choice===""|| choice===undefined){
+        incorrect++;
+        console.log("BOO")
+    }
+    else if(butts[apos].value===but[choice].value){
         correct++
         console.log("yay")
     }
      else if (butts[apos].value!==but[choice].value) {
         incorrect++
+        console.log("BOO")
+    }
+    else if(choice){
+        incorrect++;
         console.log("BOO")
     }
 
@@ -160,19 +210,19 @@ $("#mainb").on("click", function(){
         for(let i=0;i<optionp.length;i++){
             optionp[i].attr("class","button")
             $("#mainb").text("Answer")
+            shuffle(qss);
         }
         mainbf();
     }
     else if(game===true&& qdone===false){
         time=0;
         clearInterval(intervalId);
-        checka();
-        qdone=true;
+        count();
         $("#mainb").text("Next Question")
     }
     else if(game===true && qdone===true){
         for(let i=0;i<optionp.length;i++){
-            optionp[i].attr("class","button")
+            butts[i].selector.attr("class","button")
             $("#mainb").text("Answer")
         }
         mainbf();
@@ -183,7 +233,7 @@ $("#mainb").on("click", function(){
         time=0;
         $("#questions").text("you got a score of: "+ score()+"% would you like to try again?");
         $("#mainb").text("Restart");
-        // qnum=0;
+        $("#mainp").attr("class","mbutton")
         for(let i=0;i<optionc.length;i++){
             optionc[i].attr("class","hide")
         }
@@ -191,9 +241,16 @@ $("#mainb").on("click", function(){
         qdone=false;
         correct=0;
         incorrect=0;
+    }    
+})
+let infot="From the Makers Of Star Wars RPG comes STAR WARS Trivia We will Test you knowladge Of the saga. You will have 15 second to answer each question when or you can click the answer button If your certain you have the correct answer. once you press start the game will begin!"
+$("#mainp").on("click", function (){
+    $("#questions").text(infot)
+    for(let x=0;x<butts.length;x++){
+        butts[x].selector.attr("class","hide")
     }
-    
-    
+    $("#mainb").text("Start")
+    $("#mainp").attr("class","hide")
 })
 function mainbf(){
     $("#questions").text(qss[qnum].question)
@@ -209,7 +266,7 @@ function mainbf(){
     qnum++
     gamestart();
     game=true
-    time=5;
+    time=15;
 }
 
 function reply_click(id){
@@ -220,7 +277,6 @@ function reply_click(id){
             if(indexo[i]===clicked){
                 $(optionc[i]).attr("class","cbutton")
                 choice=i;
-
             }}}
     else if(clicked!==""){
         $(optionc[choice]).attr("class","button");

@@ -1,13 +1,16 @@
 body{
-    background-image: url("assets/images/background.jpg");
+    background-image: url("https://github.com/Jonathan169/Trivia-game/blob/master/assets/images/background.jpg?raw=true");
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 #gname{
     text-align: center;
+    text-shadow: -1px 0 gold, 0 1px gold, 1px 0 gold, 0 -1px gold;
+    font-size:45px;
 }
 #content{
     text-align: center;
     border:2px solid black;
-    /* background-color:rgb(221, 216, 216); */
     background-color:black;
     width:100%;
     height: 100%;
@@ -16,6 +19,7 @@ body{
 #questions{
     text-shadow: -1px 0 gold, 0 1px gold, 1px 0 gold, 0 -1px gold;
     font-size:35px;
+    line-height: 40px;
 }
 .space{
     height:60px;
