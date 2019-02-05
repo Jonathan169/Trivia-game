@@ -94,6 +94,11 @@ const q19={
     answer:'Darth Vader',
     wrong:['Annikan Skywalker','Darth Sidious','Darth Maul']
 }
+const q20={
+    question:"Who trained Luke Skywalker",
+    answer:'Yoda',
+    wrong:['Obi-won Kenobi','Qui-gon Jin','Leia Organa']
+}
 
 const b1={
     selector:$("#option1"),
@@ -118,7 +123,7 @@ const butts=[b1,b2,b3,b4]
 const but=[b1,b2,b3,b4]
 const optionc=[$("#option1"),$("#option2"),$("#option3"),$("#option4")]
 const indexo=["option1","option2","option3","option4"]
-const qss=[q1,q2,q3,q4,q5,q6,q7,q8,q9,q10,q11,q12,q13,q14,q15,q16,q17,q18,q19];
+const qss=[q1,q2,q3,q4,q5,q6,q7,q8,q9,q10,q11,q12,q13,q14,q15,q16,q17,q18,q19,q20];
 
 function shuffle(arr){
     for(let i=arr.length-1;i>0;i--){
