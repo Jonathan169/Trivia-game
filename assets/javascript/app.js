@@ -25,7 +25,7 @@ const q5={
     wrong:['They had Cookies','He wanted to have more power','To destroy the jedi']
 }
 const q6={
-    question:"Who was the first Jedi to kil a sith in over a thousand years",
+    question:"Who was the first Jedi to kill a sith in over a thousand years",
     answer:'Obi-won Kenobi',
     wrong:['Anikan Skywalker','Yoda','Qui-gon']
 }
@@ -37,7 +37,7 @@ const q7={
 const q8={
     question:"Who was lukes father",
     answer:'Anikan Skywalker',
-    wrong:["<span class='wrong'>Obi-won Kenobi</span>",'Han solo','Bale Organa']
+    wrong:["Obi-won Kenobi",'Han solo','Bale Organa']
 }
 const q9={
     question:"what was the name of the Episode One",
